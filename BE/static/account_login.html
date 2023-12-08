@@ -9,7 +9,6 @@
     <link rel="manifest" href="static/manifest.json">
 </head>
 <body>
-    <h1>THIS WEBSITE IS VERY MUCH UNDER CONSTRUCTION, DO NOT ENTER ANY PERSONNAL DATA, NOTHING IS STORED SECURELY!!</h1>
     <form>
         <label for="name-input">Pseudo</label>
         <input type="text" id="name-input" name="username">
@@ -19,7 +18,11 @@
         
         <button type="submit" id="submit-button">Connexion</button>
     </form>
-    <h3>Pas de compte? <li><a href="account_creation">Création de Compte</a></li></h3>
+    
+    <p>Pouv vous connecter, vous devez accepter nos <a href="/cgu">Conditions Générales d'Utilisation</a>.</p>
+    <label for="cgu-checkbox">J'accepte les CGU</label>
+    <input id="cgu-checkbox" type="checkbox">
+
 </body>
 <script src="../static/account_login.js"></script>
 </html>

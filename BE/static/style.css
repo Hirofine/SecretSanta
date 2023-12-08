@@ -78,3 +78,19 @@ main a:hover {
         width: 100%;
     }
 }
+
+.reveal-casino {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  span {
+    display: inline-block;
+    width: 20px; /* Ajustez la largeur pour chaque lettre */
+    overflow: hidden;
+    animation: reelText 1s infinite; /* Durée de l'animation */
+  }
+  
+ 

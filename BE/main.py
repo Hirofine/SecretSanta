@@ -28,6 +28,9 @@ def get_login_page():
 def get_login_page():
     return FileResponse("static/reveal.html")
 
+@app.get("/cgu/")
+def get_login_page():
+    return FileResponse("static/cgu.html")
 
 app.add_middleware(
     CORSMiddleware,

@@ -1,5 +1,6 @@
 var api_url = "https://be.magimathicart.hirofine.fr"
 var reveal_div = document.getElementById("reveal-div");
+const text = document.getElementById("text");
 document.addEventListener("DOMContentLoaded", function () {
 
     
@@ -20,12 +21,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+
+function pause(ms){
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function update_page(is_connected){
     switch(is_connected){
         case true:
-            reveal_div.style.display = "block";
+            reveal_div.style.display = "inline";
+            text.innerHTML = "Tu es le Secret Santa de "
             a = await retrieve_receiver();
-            reveal_div.innerHTML = "Tu es Secret Santa de " + a["pseudo"];
+            
+
+            
+
+            name_length = a["pseudo"].length;
+            for (i = 0; i<name_length; i++){
+                var slot = document.createElement("span");
+                slot.id = "slot" + i;
+            }
+            const slots = document.querySelectorAll('span');
+            const startTime = Date.now();
+            is_res = false;
+
+            while(!is_res){
+                await pause(10);
+                const currentTime = Date.now();
+                const elapsedTime = currentTime - startTime;
+                for (let i = 0; i < a["pseudo"].length; i++) {
+                    if (elapsedTime >= 1000 * (i + 1)){
+                        slots[i].textContent = a["pseudo"].charAt(i);
+                    }else{
+                        slots[i].textContent = randomChar(); // Affiche une lettre aléatoire
+                    }
+                }
+                // Si 15 secondes se sont écoulées, sortir de la boucle
+                if (elapsedTime >= 1000 * (name_length + 1)) {
+                    is_res = true;
+                break;
+                }
+            } 
+            
             console.log("case true");
             break;
         case false:
@@ -38,6 +75,11 @@ async function update_page(is_connected){
             break;
        }
 }
+
+function randomChar() {
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'; // Liste des caractères possibles
+    return alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+  }
 
 async function retrieve_receiver(){
     try {

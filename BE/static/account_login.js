@@ -6,7 +6,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const passwordInput = document.getElementById("password-input");
     const submit_button = document.getElementById("submit-button");
 
+    const cgu_check = document.getElementById("cgu-checkbox");
+
     form.addEventListener("submit", function (event) {
+        if (!cgu_check.checked){
+            alert("Vous devez accepter les conditions d'utilisations");
+            return;
+        }
         event.preventDefault(); // Empêchez la soumission du formulaire par défaut
 
         // Récupérez les données du formulaire
