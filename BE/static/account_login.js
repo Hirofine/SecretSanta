@@ -1,4 +1,4 @@
-var api_url = "https://be.magimathicart.hirofine.fr"
+var api_url = "https://secretsanta.hirofine.fr"
 
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form");
@@ -9,12 +9,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const cgu_check = document.getElementById("cgu-checkbox");
 
     form.addEventListener("submit", function (event) {
+       
+        event.preventDefault(); // Empêchez la soumission du formulaire par défaut
         if (!cgu_check.checked){
             alert("Vous devez accepter les conditions d'utilisations");
             return;
         }
-        event.preventDefault(); // Empêchez la soumission du formulaire par défaut
-
         // Récupérez les données du formulaire
         const pseudo = usernameInput.value;
         const passw = passwordInput.value;
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             console.log(data);
             if (data["message"] == "Connexion réussie"){
-                window.location.href = "https://be.magimathicart.hirofine.fr/reveal";
+                window.location.href = "https://secretsanta.hirofine.fr/reveal";
             }else{
                 console.log("c'est la merder");
             }

@@ -1,4 +1,4 @@
-var api_url = "https://be.magimathicart.hirofine.fr"
+var api_url = "https://secretsanta.hirofine.fr"
 var reveal_div = document.getElementById("reveal-div");
 const text = document.getElementById("text");
 document.addEventListener("DOMContentLoaded", function () {
