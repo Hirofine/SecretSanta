@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             console.log(data);
             if (data["message"] == "Connexion réussie"){
-                window.location.href = "https://magimathicart.hirofine.fr";
+                window.location.href = "https://be.magimathicart.hirofine.fr/reveal";
             }else{
                 console.log("c'est la merder");
             }

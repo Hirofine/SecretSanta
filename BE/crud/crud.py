@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from models.index import Users#, UserCadeaux, UserLiens
+from models.index import Users, UserCadeaux, UserLiens
 
 # Fonction générique pour créer un enregistrement
 def create(db: Session, model, data):

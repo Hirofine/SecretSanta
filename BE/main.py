@@ -24,6 +24,11 @@ def get_register_page():
 def get_login_page():
     return FileResponse("static/account_login.html")
 
+@app.get("/reveal/")
+def get_login_page():
+    return FileResponse("static/reveal.html")
+
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["https://magimathicart.hirofine.fr", "https://be.magimathicart.hirofine.fr"],
