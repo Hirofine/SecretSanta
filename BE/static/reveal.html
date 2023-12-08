@@ -1,21 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset = "UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Découvre de qui tu est le Secret Santa</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Découvre de qui tu es le Secret Santa</title>
     <link rel="stylesheet" href="../static/style.css">
     <link rel="manifest" href="static/manifest.json">
+    <link rel="shortcut icon" href="https://be.magimathicart.hirofine.fr/favicon" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #292929;
+            color: #ffffff;
+        }
+        .reveal-casino {
+            text-align: center;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #1b1b1b;
+        }
+        #text {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ffa31a;
+        }
+        span {
+            display: inline-block;
+            width: 20px;
+            overflow: hidden;
+            margin: 0 2px;
+            border-bottom: 1px solid #808080;
+            animation: reelText 1s infinite;
+        }
+       
+    </style>
 </head>
 <body>
     <div id="reveal-div" class="reveal-casino">
-        <p id="text">GIGA CHIBRAX!!</p>
-        <span id="slot1"></span>
-        <span id="slot2"></span>
-        <span id="slot3"></span>
-        <span id="slot4"></span>
+        <p id="text">GIGA CHIBRAX !!</p>
     </div>
+    <script src="../static/reveal.js"></script>
 </body>
-<script src="../static/reveal.js"></script>
 </html>

@@ -30,7 +30,7 @@ async function update_page(is_connected){
     switch(is_connected){
         case true:
             reveal_div.style.display = "inline";
-            text.innerHTML = "Tu es le Secret Santa de "
+            text.innerHTML = "Tu es le Papou Noël Secret de "
             a = await retrieve_receiver();
             
 
@@ -40,24 +40,28 @@ async function update_page(is_connected){
             for (i = 0; i<name_length; i++){
                 var slot = document.createElement("span");
                 slot.id = "slot" + i;
+                reveal_div.appendChild(slot);
             }
             const slots = document.querySelectorAll('span');
+           
+            
+            
             const startTime = Date.now();
             is_res = false;
-
+            var delta = 500;
             while(!is_res){
                 await pause(10);
                 const currentTime = Date.now();
                 const elapsedTime = currentTime - startTime;
                 for (let i = 0; i < a["pseudo"].length; i++) {
-                    if (elapsedTime >= 1000 * (i + 1)){
+                    if (elapsedTime >= delta * (i + 1)){
                         slots[i].textContent = a["pseudo"].charAt(i);
                     }else{
                         slots[i].textContent = randomChar(); // Affiche une lettre aléatoire
                     }
                 }
                 // Si 15 secondes se sont écoulées, sortir de la boucle
-                if (elapsedTime >= 1000 * (name_length + 1)) {
+                if (elapsedTime >= delta * (name_length + 1)) {
                     is_res = true;
                 break;
                 }
