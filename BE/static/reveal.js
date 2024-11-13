@@ -1,4 +1,6 @@
-var api_url = "https://secretsanta.hirofine.fr"
+// var api_url = "https://secretsanta.hirofine.fr"
+var api_url = "https://dev.secretsanta.hirofine.fr";
+
 var reveal_div = document.getElementById("reveal-div");
 const text = document.getElementById("text");
 document.addEventListener("DOMContentLoaded", function () {
@@ -32,6 +34,8 @@ async function update_page(is_connected){
             reveal_div.style.display = "inline";
             text.innerHTML = "Tu es le Papou Noël Secret de "
             a = await retrieve_receiver();
+            b = await retrieve_firstgift();
+            c = await retrieve_secondgift();
             
 
             
@@ -60,13 +64,36 @@ async function update_page(is_connected){
                         slots[i].textContent = randomChar(); // Affiche une lettre aléatoire
                     }
                 }
-                // Si 15 secondes se sont écoulées, sortir de la boucle
+                // Si tous les chars se sont affichés, sortir de la boucle
                 if (elapsedTime >= delta * (name_length + 1)) {
                     is_res = true;
                 break;
                 }
             } 
             
+            smallgift_div = document.createElement("div");
+            firstgift_div = document.createElement("div");
+            secondgift_div = document.createElement("div");
+            text_first = document.createElement("p");
+            text_first.innerHTML = "Ton premier petit cadeau est pour :";
+            name_first = document.createElement("p");
+            name_first.innerHTML = b["pseudo"];
+            text_second = document.createElement("p");
+            text_second.innerHTML = "Ton second petit cadeau est pour :";
+            name_second = document.createElement("p");
+            name_second.innerHTML = c["pseudo"];
+
+            firstgift_div.appendChild(text_first);
+            firstgift_div.appendChild(name_first);
+
+            secondgift_div.appendChild(text_second);
+            secondgift_div.appendChild(name_second);
+
+            smallgift_div.appendChild(firstgift_div);
+            smallgift_div.appendChild(secondgift_div);
+
+            reveal_div.appendChild(smallgift_div);
+
             console.log("case true");
             break;
         case false:
@@ -104,5 +131,43 @@ async function retrieve_receiver(){
     } catch (error) {
         console.error("Erreur lors de la vérification du pseudo : " + error);
         return []; // Retourne une liste vide en cas d'erreur
+    }
+}
+
+async function retrieve_firstgift(){
+    try{
+        const response = await fetch(api_url + `/firstgift/`, {
+            method: 'GET',
+            credentials: 'include'
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log("data :", data);
+        return data;
+    } catch (error) {
+        console.error("Erreur lors de la vérification du pseudo : " + error);
+        return [];
+    }
+}
+
+async function retrieve_secondgift(){
+    try{
+        const response = await fetch(api_url + `/secondgift/`, {
+            method: 'GET',
+            credentials: 'include'
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log("data :", data);
+        return data;
+    } catch (error) {
+        console.error("Erreur lors de la vérification du pseudo : " + error);
+        return [];
     }
 }

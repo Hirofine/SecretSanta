@@ -1,4 +1,5 @@
-var api_url = "https://secretsanta.hirofine.fr"
+// var api_url = "https://secretsanta.hirofine.fr"
+var api_url = "https://dev.secretsanta.hirofine.fr";
 
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form");
@@ -36,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             console.log(data);
             if (data["message"] == "Connexion réussie"){
-                window.location.href = "https://secretsanta.hirofine.fr/reveal";
+                window.location.href = api_url + "/reveal";
             }else{
                 console.log("c'est la merder");
             }

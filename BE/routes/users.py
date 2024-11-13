@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 import binascii
 import json
 from helper import verify_token, TOKEN_VALIDE, TOKEN_EXPIRE, TOKEN_INVALIDE, TOKEN_NOT_SENT, USER_NOT_EXISTANT
-#from starlette.responses import JSONResponse
+# from starlette.responses import JSONResponse
 from config.db import get_db, Session
 from sqlalchemy import text, or_
 from sqlalchemy.exc import SQLAlchemyError
@@ -74,7 +74,8 @@ def rt_create_user(user: UserCreate,  request: Request, db: Session = Depends(ge
     }
 
     response = JSONResponse(content={"message": "Connexion réussie"})
-    response.set_cookie("session", cookie_content, secure=True, httponly=True, max_age=3600 * token_len_hour, domain="hirofine.fr", samesite="None", path="/")
+    # response.set_cookie("session", cookie_content, secure=True, httponly=True, max_age=3600 * token_len_hour, domain="hirofine.fr", samesite="None", path="/")
+    response.set_cookie("session", cookie_content, secure=True, httponly=True, max_age=3600 * token_len_hour, domain="0.0.0.0", samesite="None", path="/")
     print(response.raw_headers)
     
     return response
@@ -152,7 +153,7 @@ def disconnect(request: Request, db: Session = Depends(get_db)):
     user_id = session["id"]
     user_pseudo = session["pseudo"]
     token = session["token"]
-    #find user in database
+    # find user in database
     db_user = get_user(db, user_id)
     if db_user is None:
         return JSONResponse(content={"message": "Cet utilisateur n'existe pas", "data" : False})

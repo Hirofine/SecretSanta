@@ -9,6 +9,7 @@ class UserCadeaux(Base):
     user1id = Column(Integer, unique=True, index=True)
     user2id = Column(Integer, ForeignKey("Users.id"))
     annee = Column(Integer, ForeignKey("Users.id"))
-
+    user3id = Column(Integer, ForeignKey("Users.id"))
+    user4id = Column(Integer, ForeignKey("Users.id"))
     # Autres colonnes d'utilisateur, ajoutez-les ici si nécessaire
 

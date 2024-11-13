@@ -10,7 +10,7 @@ from fastapi.responses import FileResponse
 app = FastAPI()
 
 # Configuration de CORS
-origins = ["https://secretsanta.hirofine.fr"] # permettre l'accès à partir de n'importe quelle origine
+origins = ["https://dev.secretsanta.hirofine.fr"] # permettre l'accès à partir de n'importe quelle origine
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -52,7 +52,7 @@ def get_login_page():
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://secretsanta.hirofine.fr"],
+    allow_origins=["https://dev.secretsanta.hirofine.fr"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

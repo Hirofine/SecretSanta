@@ -5,6 +5,8 @@ class UserCadeauBase(BaseModel):
     user1id : str
     user2id: str
     annee: int
+    user3id: str
+    user4id: str
 
 class UserCadeauCreate(UserCadeauBase):
     pass

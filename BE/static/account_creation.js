@@ -1,4 +1,5 @@
-var api_url = "https://secretsanta.hirofine.fr"
+// var api_url = "https://secretsanta.hirofine.fr"
+var api_url = "https://dev.secretsanta.hirofine.fr";
 
 document.addEventListener("DOMContentLoaded", function () {
     // Sélectionnez les éléments du formulaire

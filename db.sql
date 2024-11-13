@@ -11,7 +11,10 @@ CREATE TABLE Users (
     passw VARCHAR(255) NOT NULL,
     token VARCHAR(255),
     tokenExpi DATETIME,
-    tokenSalt VARCHAR(255)
+    tokenSalt VARCHAR(255),
+    participate2023 BOOL,
+    participate2024 BOOL,
+    participate2025 BOOL
 );
 
 -- Table UserCadeau
@@ -20,9 +23,13 @@ CREATE TABLE UserCadeau(
     user1id INT,
     user2id INT,
     annee INT,
+    user3id INT,
+    user4id INT,
     UNIQUE (user1id, user2id),
     FOREIGN KEY (user1id) REFERENCES Users(id),
-    FOREIGN KEY (user2id) REFERENCES Users(id)
+    FOREIGN KEY (user2id) REFERENCES Users(id),
+    FOREIGN KEY (user3id) REFERENCES Users(id),
+    FOREIGN KEY (user4id) REFERENCES Users(id)
 );
 
 -- Table UserLien
