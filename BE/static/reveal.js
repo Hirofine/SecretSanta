@@ -71,23 +71,36 @@ async function update_page(is_connected){
                 }
             } 
             
-            smallgift_div = document.createElement("div");
-            firstgift_div = document.createElement("div");
-            secondgift_div = document.createElement("div");
-            text_first = document.createElement("p");
-            text_first.innerHTML = "Ton premier petit cadeau est pour :";
-            name_first = document.createElement("p");
-            name_first.innerHTML = b["pseudo"];
-            text_second = document.createElement("p");
-            text_second.innerHTML = "Ton second petit cadeau est pour :";
-            name_second = document.createElement("p");
-            name_second.innerHTML = c["pseudo"];
 
-            firstgift_div.appendChild(text_first);
-            firstgift_div.appendChild(name_first);
+            
 
-            secondgift_div.appendChild(text_second);
-            secondgift_div.appendChild(name_second);
+
+            const smallgift_div = document.createElement("div");
+                
+            function createGiftDiv(text, name){
+                const gift_div = document.createElement("div");
+                const gift_text = document.createElement("div");
+
+                gift_text.innerHTML = text;
+
+                // creation de la boite cadeau
+                const gift_box = document.createElement("div");
+                gift_box.className = "gift-box";
+                gift_box.innerHTML = "Cliquer pour déballer";
+
+                gift_box.onclick = function () {
+                    gift_box.innerHTML = name;
+                    gift_box.classList.add("revealed");
+                };
+
+                gift_div.appendChild(gift_text);
+                gift_div.appendChild(gift_box);
+
+                return gift_div;
+            }
+
+            const firstgift_div = createGiftDiv("Ton premier petit cadeau est pour:", b["pseudo"]);
+            const secondgift_div = createGiftDiv("Ton second petit cadeau est pour:", c["pseudo"]);
 
             smallgift_div.appendChild(firstgift_div);
             smallgift_div.appendChild(secondgift_div);
