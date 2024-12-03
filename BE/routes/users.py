@@ -128,7 +128,10 @@ def login(user: UserCreate, db: Session = Depends(get_db)):
                     passw= user_db.passw,
                     token= hashed_token,
                     tokenExpi= tokenExpi.isoformat(),
-                    tokenSalt= tokenSalt
+                    tokenSalt= tokenSalt,
+                    participate2023= user_db.participate2023,
+                    participate2024= user_db.participate2024,
+                    participate2025= user_db.participate2025
                 )
             
             updated_user = update_user(db, user_db.id, user)

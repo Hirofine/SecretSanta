@@ -41,7 +41,7 @@ def rt_get_cadeau(request: Request, db: Session = Depends(get_db)):
     tok = verify_token(request, db)
     if (tok == TOKEN_VALIDE):
         id = user_id_from_token(request, db)
-        kdo = db.query(UserCadeaux).filter(UserCadeaux.user1id == id).first()
+        kdo = db.query(UserCadeaux).filter(UserCadeaux.user1id == id, UserCadeaux.annee == 2024).first()
         if kdo == None:
             raise HTTPException(status_code=404, message="Erreur: pas de cadeau trouvé pour cet utilisateur")
         user = db.query(Users).filter(Users.id == kdo.user2id).first()
@@ -60,7 +60,7 @@ def rt_get_firstgift(request: Request, db: Session = Depends(get_db)):
     tok = verify_token(request, db)
     if(tok == TOKEN_VALIDE):
         id = user_id_from_token(request, db)
-        kdo = db.query(UserCadeaux).filter(UserCadeaux.user1id == id and UserCadeaux.annee == 2024).first()
+        kdo = db.query(UserCadeaux).filter(UserCadeaux.user1id == id, UserCadeaux.annee == 2024).first()
         if kdo == None:
             raise HTTPException(status_code=404, message="Erreur: pas de cadeau trouvé pour cet utilisateur")
         user = db.query(Users).filter(Users.id == kdo.user3id).first()
@@ -79,7 +79,7 @@ def rt_get_secondgift(request: Request, db: Session = Depends(get_db)):
     tok = verify_token(request, db)
     if(tok == TOKEN_VALIDE):
         id = user_id_from_token(request, db)
-        kdo = db.query(UserCadeaux).filter(UserCadeaux.user1id == id and UserCadeaux.annee == 2024).first()
+        kdo = db.query(UserCadeaux).filter(UserCadeaux.user1id == id, UserCadeaux.annee == 2024).first()
         if kdo == None:
             raise HTTPException(status_code=404, message="Erreur: pas de cadeau trouvé pour cet utilisateur")
         user = db.query(Users).filter(Users.id == kdo.user4id).first()
